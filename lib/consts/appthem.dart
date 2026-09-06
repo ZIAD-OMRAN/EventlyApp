@@ -2,7 +2,7 @@ import 'package:envently/consts/appcolors.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppTheme {
-  ThemeData lightTheme = ThemeData(
+  static ThemeData lightTheme = ThemeData(
     textTheme: _gettextThem(AppColors.textligthcolor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.primaryColor,
@@ -20,7 +20,7 @@ abstract class AppTheme {
       iconTheme: IconThemeData(color: AppColors.primaryColor),
     ),
   );
-  ThemeData darkTheme = ThemeData(
+ static ThemeData darkTheme = ThemeData(
     textTheme: _gettextThem(AppColors.textdarkcolor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkprimary,
