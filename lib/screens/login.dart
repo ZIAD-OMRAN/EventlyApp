@@ -1,0 +1,144 @@
+import 'package:envently/consts/appcolors.dart';
+import 'package:envently/consts/appimages.dart';
+import 'package:envently/screens/createAccount.dart';
+import 'package:envently/screens/forgetPssword.dart';
+import 'package:envently/widgets/bottonwidget.dart';
+import 'package:envently/widgets/textform.dart';
+import 'package:envently/widgets/textwidget.dart';
+import 'package:flutter/material.dart';
+
+
+class Login extends StatelessWidget {
+  const Login({super.key});
+  static String routename = 'loginScreen';
+  @override
+  Widget build(BuildContext context) {
+    final double screenheight = MediaQuery.of(context).size.height;
+    final double screenwidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(Appimages.Logo, width: screenwidth * .4),
+              ),
+            ),
+            Textform(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Your Email';
+                }
+                if (!value.contains('@gmail.com')) {
+                  return 'Please Enter valid Email';
+                }
+                return null;
+              },
+
+              hint: Text('Email'),
+              prefixIcon: Icon(Icons.email_rounded),
+            ),
+            Textform(
+              hint: Text('Password'),
+              prefixIcon: Icon(Icons.lock_rounded),
+            ),
+
+            Align(
+              alignment: AlignmentGeometry.centerRight,
+              child: Textwidget(
+                onPressed: () {
+                  Navigator.pushNamed(context, Forgetpssword.routename);
+                },
+                text: 'Forget Password?',
+              ),
+            ),
+            Bottonwidget(text: 'Login'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don’t Have Account ?',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                ),
+                Textwidget(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Createaccount.routename);
+                  },
+                  text: 'Create Account',
+                ),
+              ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: AppColors.primaryColor,
+                    thickness: 1,
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                ),
+                Text(
+                  'Or',
+                  style: TextStyle(
+                    color: AppColors.primaryColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Expanded(
+                  child: Divider(
+                    color: AppColors.primaryColor,
+                    thickness: 1,
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+              child: Container(
+                width: screenwidth * 1,
+                height: screenheight * .06,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: BoxBorder.all(color: AppColors.primaryColor),
+                ),
+                child: Row(
+                  spacing: 10,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(Appimages.google2, height: 30, width: 30),
+                    Text(
+                      'Login With Google',
+                      style: TextStyle(
+                        fontSize: 20,
+
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset(
+                'assets/images/Group 9.png',
+                width: screenwidth * .3,
+                height: screenheight * .04,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

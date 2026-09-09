@@ -14,15 +14,16 @@ class Bottonwidget extends StatelessWidget {
         child: Container(
           alignment: AlignmentGeometry.center,
           height: 60,
+
+          decoration: BoxDecoration(
+            color: AppColors.primaryColor,
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: Text(
             text,
             style: Theme.of(
               context,
-            ).textTheme.bodyLarge?.copyWith(color: AppColors.textdarkcolor),
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-            borderRadius: BorderRadius.circular(16),
+            ).textTheme.bodyLarge?.copyWith(color: Colors.white),
           ),
         ),
       ),

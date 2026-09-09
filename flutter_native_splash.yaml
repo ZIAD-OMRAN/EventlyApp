@@ -10,7 +10,7 @@ flutter_native_splash:
   color: "#F2FEFF"
   color_dark: "#101127"
 
-  image: "assets/images/Group 18572.png"
+  image: "assets/images/splach.png"
   image_dark: "assets/images/Group 18573.png"
 
 
@@ -24,7 +24,7 @@ flutter_native_splash:
     color: "#FFFFFF"
     color_dark: "#101127"
 
-    image: "assets/images/Group 18572.png"
+    image: "assets/images/splach.png"
     image_dark: "assets/images/Group 18573.png"
 
     icon_background_color: "#111111"

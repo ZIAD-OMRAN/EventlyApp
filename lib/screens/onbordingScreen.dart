@@ -1,6 +1,8 @@
 import 'package:envently/consts/appcolors.dart';
 import 'package:envently/consts/appimages.dart';
+import 'package:envently/consts/prefrenses.dart';
 import 'package:envently/models/onbordingModel.dart';
+import 'package:envently/screens/login.dart';
 import 'package:envently/widgets/bottonwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -175,7 +177,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 alignment: Alignment.centerRight,
                                 child: index != 0
                                     ? GestureDetector(
-                                        onTap: () {
+                                        onTap: () async {
+                                          if (index == 3) {
+                                            await Prefrenses.onbording(
+                                              Prefrenses.appObordingKey,
+                                              true,
+                                            );
+                                            if (!mounted) return;
+
+                                            Navigator.pushReplacementNamed(
+                                              context,
+                                              Login.routename,
+                                            );
+
+                                            return;
+                                          }
                                           controller.nextPage(
                                             duration: Duration(
                                               milliseconds: 300,

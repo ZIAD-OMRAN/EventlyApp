@@ -1,21 +1,35 @@
 import 'package:envently/consts/appthem.dart';
+import 'package:envently/consts/prefrenses.dart';
+import 'package:envently/screens/createAccount.dart';
+import 'package:envently/screens/forgetPssword.dart';
+import 'package:envently/screens/login.dart';
 import 'package:envently/screens/onbordingScreen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final bool onboardingCompleted = await Prefrenses.isOnboardingCompleted();
+  runApp(MyApp(onboardingCompleted: onboardingCompleted));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool onboardingCompleted;
+  const MyApp({required this.onboardingCompleted, super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: OnboardingScreen.routename,
+      initialRoute: onboardingCompleted
+          ? Login.routename
+          : OnboardingScreen.routename,
       routes: {
         OnboardingScreen.routename: (context) => const OnboardingScreen(),
+
+        Login.routename: (context) => const Login(),
+        Forgetpssword.routename: (context) => const Forgetpssword(),
+        Createaccount.routename : (context) => Createaccount(),
       },
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
