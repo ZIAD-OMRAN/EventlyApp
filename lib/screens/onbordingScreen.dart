@@ -34,8 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     double screenheight = MediaQuery.of(context).size.height;
-    double screenwidth = MediaQuery.of(context).size.width;
-
+    
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(Appimages.header, height: screenheight * .07),

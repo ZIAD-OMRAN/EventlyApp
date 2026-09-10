@@ -3,9 +3,24 @@ import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    splashFactory: NoSplash.splashFactory,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primaryColor,
+    ),
+    hintColor: AppColors.grayColor,
     textTheme: _gettextThem(AppColors.textligthcolor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
       backgroundColor: AppColors.primaryColor,
+      showSelectedLabels: false,
+      showUnselectedLabels: true,
+      selectedItemColor: AppColors.colorsecondry,
+      unselectedItemColor: AppColors.colorsecondry,
+      unselectedLabelStyle: TextStyle(
+        color: AppColors.colorsecondry,
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     scaffoldBackgroundColor: AppColors.colorsecondry,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
@@ -20,10 +35,27 @@ abstract class AppTheme {
       iconTheme: IconThemeData(color: AppColors.primaryColor),
     ),
   );
- static ThemeData darkTheme = ThemeData(
+  static ThemeData darkTheme = ThemeData(
+    splashFactory: NoSplash.splashFactory,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.darkprimary,
+    ),
+    hintColor: AppColors.textdarkcolor,
+
     textTheme: _gettextThem(AppColors.textdarkcolor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+
       backgroundColor: AppColors.darkprimary,
+      showSelectedLabels: false,
+      showUnselectedLabels: true,
+      selectedItemColor: AppColors.colorsecondry,
+      unselectedItemColor: AppColors.colorsecondry,
+      unselectedLabelStyle: TextStyle(
+        color: AppColors.colorsecondry,
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     scaffoldBackgroundColor: AppColors.darkprimary,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.darkprimary),
