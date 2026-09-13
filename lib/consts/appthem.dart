@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    chipTheme: ChipThemeData(
+      surfaceTintColor: Colors.transparent,
+      pressElevation: 0,
+    ),
+    focusColor: AppColors.primaryColor,
+    cardColor: AppColors.colorsecondry,
     splashFactory: NoSplash.splashFactory,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.primaryColor,
@@ -36,6 +42,12 @@ abstract class AppTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
+    chipTheme: ChipThemeData(
+      surfaceTintColor: Colors.transparent,
+      pressElevation: 0,
+    ),
+    focusColor: AppColors.textdarkcolor,
+    cardColor: AppColors.primaryColor,
     splashFactory: NoSplash.splashFactory,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.darkprimary,

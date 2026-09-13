@@ -46,6 +46,7 @@ class _CreateaccountState extends State<Createaccount> {
               prefixIcon: Icon(Icons.email_rounded),
             ),
             Textform(
+              validator: passwordValidator,
               suffixIcon: IconButton(
                 onPressed: () {
                   setState(() {
@@ -63,6 +64,7 @@ class _CreateaccountState extends State<Createaccount> {
               prefixIcon: Icon(Icons.lock_rounded),
             ),
             Textform(
+              validator: passwordValidator,
               suffixIcon: IconButton(
                 onPressed: () {
                   setState(() {
@@ -109,4 +111,28 @@ class _CreateaccountState extends State<Createaccount> {
       ),
     );
   }
+}
+
+String? passwordValidator(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Please enter your password';
+  }
+
+  if (value.length < 8) {
+    return 'Password must be at least 8 characters';
+  }
+
+  if (!RegExp(r'[A-Z]').hasMatch(value)) {
+    return 'Password must contain an uppercase letter';
+  }
+
+  if (!RegExp(r'[a-z]').hasMatch(value)) {
+    return 'Password must contain a lowercase letter';
+  }
+
+  if (!RegExp(r'[0-9]').hasMatch(value)) {
+    return 'Password must contain a number';
+  }
+
+  return null;
 }

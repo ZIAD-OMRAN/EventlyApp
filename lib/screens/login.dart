@@ -1,3 +1,4 @@
+import 'package:envently/auth/google_auth.dart';
 import 'package:envently/consts/appcolors.dart';
 import 'package:envently/consts/appimages.dart';
 import 'package:envently/screens/createAccount.dart';
@@ -48,6 +49,7 @@ class _LoginState extends State<Login> {
                 prefixIcon: Icon(Icons.email_rounded),
               ),
               Textform(
+                validator: passwordValidator,
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
@@ -128,28 +130,33 @@ class _LoginState extends State<Login> {
 
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
-                child: Container(
-                  width: screenwidth * 1,
-                  height: screenheight * .06,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: BoxBorder.all(color: AppColors.primaryColor),
-                  ),
-                  child: Row(
-                    spacing: 10,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(Appimages.google2, height: 30, width: 30),
-                      Text(
-                        'Login With Google',
-                        style: TextStyle(
-                          fontSize: 20,
+                child: GestureDetector(
+                  onTap: () async {
+                    var userCredientials = GoogleAuth.SinInWithgoogle();
+                  },
+                  child: Container(
+                    width: screenwidth * 1,
+                    height: screenheight * .06,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: BoxBorder.all(color: AppColors.primaryColor),
+                    ),
+                    child: Row(
+                      spacing: 10,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(Appimages.google2, height: 30, width: 30),
+                        Text(
+                          'Login With Google',
+                          style: TextStyle(
+                            fontSize: 20,
 
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -169,4 +176,28 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+}
+
+String? passwordValidator(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Please enter your password';
+  }
+
+  if (value.length < 8) {
+    return 'Password must be at least 8 characters';
+  }
+
+  if (!RegExp(r'[A-Z]').hasMatch(value)) {
+    return 'Password must contain an uppercase letter';
+  }
+
+  if (!RegExp(r'[a-z]').hasMatch(value)) {
+    return 'Password must contain a lowercase letter';
+  }
+
+  if (!RegExp(r'[0-9]').hasMatch(value)) {
+    return 'Password must contain a number';
+  }
+
+  return null;
 }
