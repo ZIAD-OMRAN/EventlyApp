@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "906970457877-pnjelql93p3b5bokju3fflc1msdhjrj9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.envently",
+            "certificate_hash": "471179d4e53ce6d076aeaffaf444fc029f48a973"
+          }
+        },
+        {
           "client_id": "906970457877-fd2m0r79or98digq9jj97rlcfe3v4h9n.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "906970457877-fd2m0r79or98digq9jj97rlcfe3v4h9n.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "906970457877-4pska66sa34qv94j93eifc0adhaf2vt2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.envently"
+              }
             }
           ]
         }

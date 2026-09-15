@@ -6,6 +6,7 @@ import 'package:envently/screens/forgetPssword.dart';
 import 'package:envently/screens/login.dart';
 import 'package:envently/screens/mianLayer.dart';
 import 'package:envently/screens/onbordingScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       initialRoute: onboardingCompleted
-          ? Login.routename
+          ? FirebaseAuth.instance.currentUser?.uid == null? Login.routename: Mianlayer.routename
           : OnboardingScreen.routename,
       routes: {
         OnboardingScreen.routename: (context) => const OnboardingScreen(),

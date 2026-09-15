@@ -56,13 +56,13 @@ class DefaultFirebaseOptions {
     projectId: 'evently-31fb4',
     storageBucket: 'evently-31fb4.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCmi1HYXp8kzv7v9trrxIdK3Zp0NwUdYCA',
     appId: '1:906970457877:ios:2df95b770110408f086b1c',
     messagingSenderId: '906970457877',
     projectId: 'evently-31fb4',
     storageBucket: 'evently-31fb4.firebasestorage.app',
+    androidClientId: '906970457877-pnjelql93p3b5bokju3fflc1msdhjrj9.apps.googleusercontent.com',
     iosClientId: '906970457877-4pska66sa34qv94j93eifc0adhaf2vt2.apps.googleusercontent.com',
     iosBundleId: 'com.example.envently',
   );

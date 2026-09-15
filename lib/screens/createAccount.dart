@@ -2,6 +2,7 @@ import 'package:envently/consts/appimages.dart';
 import 'package:envently/models/user_model.dart';
 import 'package:envently/network/auth_servses.dart';
 import 'package:envently/widgets/bottonwidget.dart';
+import 'package:envently/widgets/snake_bar.dart';
 import 'package:envently/widgets/textform.dart';
 import 'package:envently/widgets/textwidget.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class Createaccount extends StatefulWidget {
 class _CreateaccountState extends State<Createaccount> {
   bool ispasswordAvaliable1 = false;
   bool ispasswordAvaliable2 = false;
+  bool isloading = false;
   TextEditingController nameController = TextEditingController();
   TextEditingController EmailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -109,23 +111,35 @@ class _CreateaccountState extends State<Createaccount> {
                 hint: Text('Re Password'),
                 prefixIcon: Icon(Icons.lock_rounded),
               ),
+              if (isloading)
+                Center(child: CircularProgressIndicator())
+              else
+                Bottonwidget(
+                  onTap: () async {
+                    if (!_formKey.currentState!.validate()) return;
+                    setState(() {
+                      isloading = true;
+                    });
+                    try {
+                      await AuthServses.registeration(
+                        UserModel(
+                          email: EmailController.text.trim(),
+                          name: nameController.text.trim(),
+                        ),
+                        passwordController.text,
+                      );
 
-              Bottonwidget(
-                onTap: () async {
-                  if (_formKey.currentState!.validate()) {
-                    await AuthServses.registeration(
-                      UserModel(
-                        email: EmailController.text,
-                        name: nameController.text,
-                      ),
-                      passwordController.text,
-                    );
-                  }
-                  print('---------DONE---------');
-                  Navigator.pop(context);
-                },
-                text: 'Create Account',
-              ),
+                      Navigator.pop(context);
+                      SnackBarHelper.ShowSnakbarsucsess(context, 'singned in');
+                    } catch (e) {
+                      SnackBarHelper.ShowSnakbarEROOR(context, e.toString());
+                    }
+                    setState(() {
+                      isloading = false;
+                    });
+                  },
+                  text: 'Create Account',
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
