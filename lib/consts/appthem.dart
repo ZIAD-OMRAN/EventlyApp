@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    
+    disabledColor: AppColors.grayColor,
+    hoverColor: Colors.black,
     chipTheme: ChipThemeData(
       surfaceTintColor: Colors.transparent,
       pressElevation: 0,
@@ -42,6 +45,9 @@ abstract class AppTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
+     disabledColor: AppColors.primaryColor,
+     
+    hoverColor: Colors.white,
     chipTheme: ChipThemeData(
       surfaceTintColor: Colors.transparent,
       pressElevation: 0,

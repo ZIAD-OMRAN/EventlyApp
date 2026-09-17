@@ -15,4 +15,9 @@ abstract class Appimages {
   static String loveUN = 'assets/svg/loveunslected.svg';
   static String profileUN = 'assets/svg/profileunslected.svg';
   static String profileS = 'assets/svg/profleslected.svg';
+  static String titileIcon = 'assets/svg/titile edit.svg';
+  static String dateIcon = 'assets/svg/date.svg';
+  static String time = 'assets/svg/time.svg';
+  static String locationpre = 'assets/svg/locationPRE.svg';
+
 }

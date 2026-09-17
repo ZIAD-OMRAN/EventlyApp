@@ -1,8 +1,5 @@
-import 'package:envently/consts/appcolors.dart';
-import 'package:envently/consts/appimages.dart';
 import 'package:envently/home/hometab/filterwidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Homeheader extends StatelessWidget {
   const Homeheader({super.key});

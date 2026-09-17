@@ -1,4 +1,5 @@
 import 'package:envently/consts/appimages.dart';
+import 'package:envently/home/Events/createEvent.dart';
 import 'package:envently/home/hometab/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,7 +25,9 @@ class _MianlayerState extends State<Mianlayer> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, Createevent.routename);
+        },
 
         backgroundColor: Theme.of(
           context,

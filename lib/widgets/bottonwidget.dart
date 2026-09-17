@@ -2,9 +2,10 @@ import 'package:envently/consts/appcolors.dart';
 import 'package:flutter/material.dart';
 
 class Bottonwidget extends StatelessWidget {
-  const Bottonwidget({super.key, required this.text, this.onTap});
+  const Bottonwidget({super.key, required this.text, this.onTap,this.fontSize});
   final String text;
   final void Function()? onTap;
+  final double? fontSize ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -23,7 +24,7 @@ class Bottonwidget extends StatelessWidget {
             text,
             style: Theme.of(
               context,
-            ).textTheme.bodyLarge?.copyWith(color: Colors.white),
+            ).textTheme.bodyLarge?.copyWith(color: Colors.white,fontSize:fontSize ),
           ),
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:envently/consts/appthem.dart';
 import 'package:envently/consts/prefrenses.dart';
 import 'package:envently/firebase_options.dart';
+import 'package:envently/home/Events/createEvent.dart';
 import 'package:envently/screens/createAccount.dart';
 import 'package:envently/screens/forgetPssword.dart';
 import 'package:envently/screens/login.dart';
@@ -26,10 +27,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: onboardingCompleted
-          ? FirebaseAuth.instance.currentUser?.uid == null? Login.routename: Mianlayer.routename
+          ? FirebaseAuth.instance.currentUser?.uid == null
+                ? Login.routename
+                : Mianlayer.routename
           : OnboardingScreen.routename,
       routes: {
         OnboardingScreen.routename: (context) => const OnboardingScreen(),
@@ -38,6 +41,7 @@ class MyApp extends StatelessWidget {
         Forgetpssword.routename: (context) => const Forgetpssword(),
         Createaccount.routename: (context) => Createaccount(),
         Mianlayer.routename: (context) => Mianlayer(),
+        Createevent.routename: (context) => Createevent(),
       },
 
       theme: AppTheme.lightTheme,
