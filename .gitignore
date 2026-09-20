@@ -1,35 +1,33 @@
-# Flutter / Dart
+# Flutter
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
 build/
+coverage/
 
 # Android
 android/.gradle/
 android/local.properties/
-android/key.properties/
-android/app/debug/
-android/app/profile/
-android/app/release/
 
-# Keystore / signing
+# Android signing
+android/key.properties
 *.jks
 *.keystore
 *.p12
 *.pfx
 
-# Environment / Secrets
+# Environment / secrets
 .env
 .env.*
 !.env.example
 
-# Firebase / Google secrets
+# Firebase local configuration
 google-services.json
 GoogleService-Info.plist
 
-# API keys / credentials
+# Credentials / certificates
 *.pem
 *.key
 *.secret
@@ -38,8 +36,8 @@ credentials/
 
 # IDE
 .idea/
-*.iml
 .vscode/
+*.iml
 
 # OS
 .DS_Store
@@ -47,6 +45,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-# Generated files
-coverage/
