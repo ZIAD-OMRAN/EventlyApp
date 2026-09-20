@@ -1,32 +1,37 @@
-import 'package:envently/models/filterModel.dart';
+import 'package:envently/consts/appcolors.dart';
+import 'package:envently/home/Events/eventfliter.dart';
+
 import 'package:flutter/material.dart';
 
-class FilterWidget extends StatefulWidget {
-  const FilterWidget({this.onCategorySelected, super.key});
-   final Function(int)? onCategorySelected;
+class FilterWidgetevent extends StatefulWidget {
+  const FilterWidgetevent({this.onCategorySelected, super.key});
+  final Function(int)? onCategorySelected;
   @override
-  State<FilterWidget> createState() => _FilterWidgetState();
+  State<FilterWidgetevent> createState() => _FilterWidgeteventState();
 }
 
-class _FilterWidgetState extends State<FilterWidget> {
-  int indexSelected = CategoryModel.categories.first.index;
+class _FilterWidgeteventState extends State<FilterWidgetevent> {
+  int indexSelected = CategoryModelEvent.categories.first.index;
 
   @override
   Widget build(BuildContext context) {
-    List categories = CategoryModel.categories;
+    List categories = CategoryModelEvent.categories;
     return Padding(
       padding: const EdgeInsets.only(top: 15),
       child: SizedBox(
         height: 40,
 
         child: ListView.separated(
+          padding: EdgeInsets.only(left: 20),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             bool isSlected = indexSelected == categories[index].index;
-            CategoryModel currentCat = categories[index];
+            CategoryModelEvent currentCat = categories[index];
             return FilterChip(
               labelStyle: TextStyle(
-                color: isSlected ? Theme.of(context).focusColor : Colors.white,
+                color: isSlected
+                    ? Theme.of(context).dividerColor
+                    : AppColors.primaryColor,
               ),
 
               selected: isSlected,
@@ -37,16 +42,14 @@ class _FilterWidgetState extends State<FilterWidget> {
               showCheckmark: false,
               side: isSlected
                   ? null
-                  : BorderSide(color: Theme.of(context).cardColor),
-              selectedColor: Theme.of(context).cardColor,
-              backgroundColor: Theme.of(
-                context,
-              ).bottomNavigationBarTheme.backgroundColor,
+                  : BorderSide(color: AppColors.primaryColor),
+              selectedColor: AppColors.primaryColor,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               onSelected: (value) {
                 setState(() {
                   indexSelected = currentCat.index;
                 });
-                 widget.onCategorySelected?.call(currentCat.index);
+                widget.onCategorySelected?.call(currentCat.index);
               },
               label: Row(
                 spacing: 5,
@@ -54,8 +57,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Icon(
                     currentCat.icon,
                     color: isSlected
-                        ? Theme.of(context).focusColor
-                        : Colors.white,
+                        ? Theme.of(context).dividerColor
+                        : AppColors.primaryColor,
                   ),
                   Text(currentCat.name),
                 ],

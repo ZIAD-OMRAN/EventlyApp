@@ -43,6 +43,11 @@ dependencies:
   firebase_auth: ^6.6.1
   cloud_firestore: ^6.10.0
   snackbar_flutter: ^1.0.2
+  intl: ^0.20.3
+  google_maps_flutter: ^2.18.1
+  location: ^10.0.2
+  geocoding: ^5.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +75,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
+    - assets/maps/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

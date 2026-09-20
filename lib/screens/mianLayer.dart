@@ -1,6 +1,9 @@
 import 'package:envently/consts/appimages.dart';
 import 'package:envently/home/Events/createEvent.dart';
 import 'package:envently/home/hometab/homeScreen.dart';
+import 'package:envently/home/lovetab/lovescreen.dart';
+import 'package:envently/home/maptab/mapscrean.dart';
+import 'package:envently/home/profiletab/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,12 +17,7 @@ class Mianlayer extends StatefulWidget {
 
 class _MianlayerState extends State<Mianlayer> {
   int currentindex = 0;
-  List<Widget> pages = [
-    Homescreen(),
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
-    Container(color: Colors.yellow),
-  ];
+  List<Widget> pages = [Homescreen(), Mapscrean(), Lovescreen(), Profile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

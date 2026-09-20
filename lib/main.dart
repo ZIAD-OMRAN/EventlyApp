@@ -1,7 +1,11 @@
 import 'package:envently/consts/appthem.dart';
 import 'package:envently/consts/prefrenses.dart';
 import 'package:envently/firebase_options.dart';
+import 'package:envently/home/Events/chooseEventLocation.dart';
 import 'package:envently/home/Events/createEvent.dart';
+import 'package:envently/home/lovetab/lovescreen.dart';
+import 'package:envently/home/maptab/mapscrean.dart';
+import 'package:envently/home/profiletab/profile.dart';
 import 'package:envently/screens/createAccount.dart';
 import 'package:envently/screens/forgetPssword.dart';
 import 'package:envently/screens/login.dart';
@@ -42,6 +46,10 @@ class MyApp extends StatelessWidget {
         Createaccount.routename: (context) => Createaccount(),
         Mianlayer.routename: (context) => Mianlayer(),
         Createevent.routename: (context) => Createevent(),
+        Mapscrean.routename: (context) => Mapscrean(),
+        Lovescreen.routename: (context) => Lovescreen(),
+        Profile.routname: (context) => Profile(),
+        Chooseeventlocation.routename: (context) => Chooseeventlocation(),
       },
 
       theme: AppTheme.lightTheme,

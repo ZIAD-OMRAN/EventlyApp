@@ -1,11 +1,18 @@
 import 'package:envently/home/hometab/filterwidget.dart';
 import 'package:flutter/material.dart';
 
-class Homeheader extends StatelessWidget {
+class Homeheader extends StatefulWidget {
   const Homeheader({super.key});
 
   @override
+  State<Homeheader> createState() => _HomeheaderState();
+}
+
+class _HomeheaderState extends State<Homeheader> {
+  
+  @override
   Widget build(BuildContext context) {
+   
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,

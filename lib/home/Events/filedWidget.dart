@@ -7,12 +7,14 @@ class eventFileds extends StatelessWidget {
     required this.controller,
     required this.text,
     this.prefixIcon,
+    this.suffixIcon,
   });
   final String text;
 
   final double screanheigth;
   final TextEditingController controller;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class eventFileds extends StatelessWidget {
           maxLines: null,
           minLines: null,
           decoration: InputDecoration(
+            suffixIcon: suffixIcon,
             prefixIcon: prefixIcon,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),

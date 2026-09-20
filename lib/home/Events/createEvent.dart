@@ -1,13 +1,20 @@
 import 'package:envently/consts/appcolors.dart';
 import 'package:envently/consts/appimages.dart';
+import 'package:envently/home/Events/chooseEventLocation.dart';
 import 'package:envently/home/Events/filedWidget.dart';
+import 'package:envently/home/Events/flitereEvent.dart';
 import 'package:envently/home/Events/location_widget.dart';
-import 'package:envently/home/hometab/filterwidget.dart';
+
+import 'package:envently/models/cardmodel.dart';
+
 import 'package:envently/widgets/bottonwidget.dart';
-import 'package:envently/widgets/textform.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geocoding/geocoding.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 
 class Createevent extends StatefulWidget {
   const Createevent({super.key});
@@ -21,23 +28,69 @@ class _CreateeventState extends State<Createevent> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   String dateText = 'Choose Date';
-  String timeText = 'Choose Date';
+  String timeText = 'Choose Time';
+  String eventLocationText = 'Choose Event Location';
+  int selectedCategoryIndex = 1;
+  LatLng? eventLocation;
+
+  Future<String> getLocationName(LatLng location) async {
+    try {
+      final geocoding = Geocoding();
+
+      List<Placemark> places = await geocoding.placemarkFromCoordinates(
+        location.latitude,
+        location.longitude,
+      );
+
+      if (places.isNotEmpty) {
+        final place = places.first;
+
+        return place.locality ??
+            place.subAdministrativeArea ??
+            place.administrativeArea ??
+            'Unknown Location';
+      }
+
+      return 'Unknown Location';
+    } catch (e) {
+      print('Geocoding Error: $e');
+      return 'Unknown Location';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     double screanwidth = MediaQuery.of(context).size.width;
     double screanheigth = MediaQuery.of(context).size.height;
+    final selectedCategory = Cardmodel.cards.firstWhere(
+      (e) => e.id == selectedCategoryIndex,
+    );
     return Scaffold(
       appBar: AppBar(title: Text('Create Event')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            color: Colors.red,
-            height: screanheigth * .2,
-            width: screanwidth * .8,
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(selectedCategory.imagePath),
+                  fit: BoxFit.cover,
+                ),
+
+                borderRadius: BorderRadius.circular(16),
+              ),
+              height: screanheigth * .2,
+              width: screanwidth * .9,
+            ),
           ),
-          FilterWidget(),
+          FilterWidgetevent(
+            onCategorySelected: (index) {
+              setState(() {
+                selectedCategoryIndex = index;
+              });
+            },
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 15),
             child: Text('Title', style: TextStyle(fontSize: 16)),
@@ -81,9 +134,11 @@ class _CreateeventState extends State<Createevent> {
                     lastDate: DateTime(2030),
                     initialDate: DateTime.now(),
                   );
-                  setState(() {
-                    dateText = date.toString();
-                  });
+                  if (date != null) {
+                    setState(() {
+                      dateText = DateFormat('dd MMM yyyy').format(date);
+                    });
+                  }
                 },
 
                 child: Padding(
@@ -116,9 +171,11 @@ class _CreateeventState extends State<Createevent> {
                     context: context,
                     initialTime: TimeOfDay.now(),
                   );
-                  setState(() {
-                    timeText = time.toString();
-                  });
+                  if (time != null) {
+                    setState(() {
+                      timeText = time.format(context);
+                    });
+                  }
                 },
 
                 child: Padding(
@@ -139,7 +196,26 @@ class _CreateeventState extends State<Createevent> {
             child: Text('Location', style: TextStyle(fontSize: 16)),
           ),
 
-          Center(child: LocationWidget()),
+          Center(
+            child: LocationWidget(
+              text: eventLocationText,
+              onTap: () async {
+                LatLng? result = await Navigator.push<LatLng>(
+                  context,
+                  MaterialPageRoute<LatLng>(
+                    builder: (context) => Chooseeventlocation(),
+                  ),
+                );
+                if (result != null) {
+                  final locationName = await getLocationName(result);
+                  setState(() {
+                    eventLocationText = locationName;
+                    eventLocation = result;
+                  });
+                }
+              },
+            ),
+          ),
           Bottonwidget(text: 'Add Event', fontSize: 20),
         ],
       ),

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LocationWidget extends StatelessWidget {
-  const LocationWidget({super.key, this.onTap});
+  const LocationWidget({super.key, this.onTap, required this.text});
   final void Function()? onTap;
+  final String text;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -27,10 +28,7 @@ class LocationWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SvgPicture.asset(Appimages.locationpre),
             ),
-            Text(
-              'Choose Event Location',
-              style: TextStyle(color: AppColors.primaryColor),
-            ),
+            Text(text, style: TextStyle(color: AppColors.primaryColor)),
             Spacer(),
             Icon(
               Icons.arrow_back_ios_new,

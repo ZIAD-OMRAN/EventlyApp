@@ -6,6 +6,7 @@ abstract class AppTheme {
     
     disabledColor: AppColors.grayColor,
     hoverColor: Colors.black,
+    dividerColor: Colors.white,
     chipTheme: ChipThemeData(
       surfaceTintColor: Colors.transparent,
       pressElevation: 0,
@@ -47,6 +48,7 @@ abstract class AppTheme {
   static ThemeData darkTheme = ThemeData(
      disabledColor: AppColors.primaryColor,
      
+     dividerColor: Colors.black,
     hoverColor: Colors.white,
     chipTheme: ChipThemeData(
       surfaceTintColor: Colors.transparent,
