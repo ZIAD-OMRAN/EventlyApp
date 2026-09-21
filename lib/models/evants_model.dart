@@ -2,17 +2,19 @@ class EventModel {
   String title;
   String description;
   String date;
-  String id;
+  String? id;
   String category;
   bool isFave;
+  String? location;
 
   EventModel({
     required this.title,
     required this.description,
     required this.date,
-    required this.id,
+    this.id,
     required this.category,
     required this.isFave,
+    this.location,
   });
 
   static EventModel fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class EventModel {
       id: json['id'],
       category: json['category'],
       isFave: json['isFave'],
+      location: json['location'],
     );
   }
 
@@ -34,6 +37,7 @@ class EventModel {
       'id': id,
       'category': category,
       'isFave': isFave,
+      'location': location,
     };
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class eventFileds extends StatelessWidget {
   const eventFileds({
+    this.validator,
     super.key,
     required this.screanheigth,
     required this.controller,
@@ -10,7 +11,7 @@ class eventFileds extends StatelessWidget {
     this.suffixIcon,
   });
   final String text;
-
+  final String? Function(String?)? validator;
   final double screanheigth;
   final TextEditingController controller;
   final Widget? prefixIcon;
@@ -23,6 +24,7 @@ class eventFileds extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: TextFormField(
+          validator: validator,
           textAlignVertical: TextAlignVertical.top,
           expands: true,
           controller: controller,
